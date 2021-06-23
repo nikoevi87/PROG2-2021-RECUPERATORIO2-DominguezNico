@@ -1,0 +1,6 @@
+C:\Users\Usuario\source\repos\RecuperatorioNicoD\Logica\bin\Debug\Logica.dll
+C:\Users\Usuario\source\repos\RecuperatorioNicoD\Logica\bin\Debug\Logica.pdb
+C:\Users\Usuario\source\repos\RecuperatorioNicoD\Logica\obj\Debug\Logica.csprojAssemblyReference.cache
+C:\Users\Usuario\source\repos\RecuperatorioNicoD\Logica\obj\Debug\Logica.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\source\repos\RecuperatorioNicoD\Logica\obj\Debug\Logica.dll
+C:\Users\Usuario\source\repos\RecuperatorioNicoD\Logica\obj\Debug\Logica.pdb
