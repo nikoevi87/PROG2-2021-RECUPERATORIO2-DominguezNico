@@ -29,7 +29,7 @@ namespace Test
 
             response = ap.CrearMovimiento(servicio);
 
-
+            //PODRIA AGREGAR VALIDACION DE SALDOS, CONFIRMAR QUE LOS DOS USUARIOS QUEDAN CON EL SALDO CORRECTO
             Assert.AreEqual(response.Movimiento, exitosa.Movimiento );
             Assert.AreEqual(response.Resultado,exitosa.Resultado);
 

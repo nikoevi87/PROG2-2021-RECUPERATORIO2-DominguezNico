@@ -42,10 +42,13 @@ namespace Logica
                     emisor.Saldo -= value.Monto;
                     receptor.Saldo += value.Monto;
                     respuesta.Resultado = 201;
-                    emisor.HistoricoMov.Add(nuevoMovimiento);
+                    emisor.HistoricoMov.Add(nuevoMovimiento); //ESTE MOVIMIENTO DEBERIA TENER MONTO NEGATIVO
                     receptor.HistoricoMov.Add(nuevoMovimiento);
                     Movimientos.Add(nuevoMovimiento);
                     respuesta.Movimiento = nuevoMovimiento.Numero;
+
+                    //PROBLEMA DE DISEÑO, ESTE METODO HACE 2 COSAS RELACIONADAS.
+                    //DEBERIAS TENER UN METODO EN USUARIO QUE SEA "CREARTRANSACCION" QUE TENGA LA LOGICA DE CREAR EL MOVIMIENTO, AGREGAR A LISTA Y ACTUALIZAR SALDO
                     return respuesta;
 
                 }
@@ -74,7 +77,7 @@ namespace Logica
                         ListadoUsuario.Add(item);
                     }
                 }
-                ListadoUsuario.OrderByDescending(x=>x.Dia);
+                ListadoUsuario.OrderByDescending(x=>x.Dia); //ESTO NO ORDENA SI NO SE ASIGNA A UNA VARIABLE
                 resp.Listado = ListadoUsuario;
                 resp.Resultado = 200;
                 resp.Descripcion = "Listado del usuario DNI: " + documento;
@@ -107,6 +110,8 @@ namespace Logica
                 resp.Movimiento = nuevoMovimiento.Numero;
                 resp.Resultado = 200;
                 resp.Descripcion = nuevoMovimiento.Descripcion;
+
+                //NO ACTUALIZA SALDOS DEL USAURIO
                 return resp;
                 
 
@@ -117,6 +122,7 @@ namespace Logica
 
         }
 
+        //NO ES NECESARIO
         public object ObtenerMovimientoPorId(string movimiento)
         {
             return Movimientos.Find(x=>x.Numero==movimiento);

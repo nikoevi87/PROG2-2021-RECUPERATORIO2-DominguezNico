@@ -11,7 +11,7 @@ namespace RecuperatorioNicoD.Controllers
     public class MovimientoController : ApiController
     {
         Aplicacion Ap = new Aplicacion();
-        // GET: api/Movimiento
+        // INNECESARIO
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
@@ -22,6 +22,7 @@ namespace RecuperatorioNicoD.Controllers
         {
 
             GetLista respuesta = Ap.ListadoMovimientos(documento);
+            //PROBLEMA DE DISEÑO. LA LOGICA DE NEGOCIO NO DEBE CONOCER STATUS CODES. ESO ES PARTE DE LA CAPA DE SERVICIOS
             if (respuesta.Resultado == 200)
             {
                 return Ok(respuesta.Listado);
@@ -34,6 +35,8 @@ namespace RecuperatorioNicoD.Controllers
         public IHttpActionResult Post([FromBody]PostMovimiento value)
         {
             Respuesta respuesta = Ap.CrearMovimiento(value);
+            //PROBLEMA DE DISEÑO. LA LOGICA DE NEGOCIO NO DEBE CONOCER STATUS CODES. ESO ES PARTE DE LA CAPA DE SERVICIOS
+
             if (respuesta.Resultado == 201)
             {
                 return Created("", Ap.ObtenerMovimientoPorId(respuesta.Movimiento));
@@ -44,15 +47,16 @@ namespace RecuperatorioNicoD.Controllers
 
         }
 
-        // PUT: api/Movimiento/5
+        // INNECESARIO
         public void Put(int id, [FromBody]string value)
         {
         }
 
-        // DELETE: api/Movimiento/5
+        
         public IHttpActionResult Delete(string id)
         {
             Respuesta respuesta = Ap.CancelarMovimiento(id);
+            //PROBLEMA DE DISEÑO. LA LOGICA DE NEGOCIO NO DEBE CONOCER STATUS CODES. ESO ES PARTE DE LA CAPA DE SERVICIOS
             if (respuesta.Resultado == 200)
             {
                 return Ok(respuesta);
